@@ -78,23 +78,23 @@ The architecture is very loosely coupled which allows custom integrations easily
 
 ## Manual(from source)
 
-1. Clone `git clone https://github.com/amitt001/pygmy.git & cd pygmy`
-2. (Optional) Install virtualenv (optional but recommended)
-    - `virtualenv -p python3 env`
-    - `source env/bin/activate`
-3. Install dependencies: `pip3 install -r requirements.txt` (if you are using MySQL or PostgreSQL check [DB setup](#db-setup) section)
-4. `python run.py` (It runs Flask and Django servers using gunicorn)
+1. Clone `git clone https://github.com/amitt001/pygmy.git && cd pygmy`
+2. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) (if not already installed)
+    - macOS/Linux: `curl -LsSf https://astral.sh/uv/install.sh | sh`
+3. Install dependencies and create virtual environment (Python 3.14 is set automatically via `.python-version`):
+    - `uv sync`
+4. `uv run python run.py` (It runs Flask and Django servers using gunicorn)
 5. Visit `127.0.0.1:8000` to use the app
 6. Logs can be viewed at `pygmy/data/pygmy.log`
 
 Note:
 
- - **This module only supports Python 3. Make sure pip and virtualenv are both python 3 based versions.**(To install Python 3 on Mac: http://docs.python-guide.org/en/latest/starting/install3/osx/)
+ - **This project requires Python 3.14+. Python version is managed automatically by uv via the `.python-version` file.**
  - The project has two config files:
     - pygmy.cfg: `pygmy/config/pygmy.cfg` rest API and pygmy core settings file
     - settings.py: `pygmyui/pygmyui/settings.py` Django settings file
  - SQLite is default DB, if you are using PostgreSQL or MySQL with this project, make sure they are installed into the system.
- - You can run pygmy shell also. Present in the root directory. To run the program on the terminal: `python shell`
+ - You can run pygmy shell also. Present in the root directory. To run the program on the terminal: `uv run python shell`
  - By default, DEBUG is set to True in `pygmyui/pygmyui/settings.py` file, set it to False in production.
 
 ## DB Setup:

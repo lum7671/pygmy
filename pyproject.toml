@@ -1,0 +1,73 @@
+[project]
+name = "pygmy"
+version = "1.3.0"
+description = "Pygmy - Open-Source Python Based Link Shortener"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Amit Tripathi", email = "mail2amit19@gmail.com" }]
+requires-python = ">=3.14"
+
+dependencies = [
+    "aiohttp>=3.9",
+    "bcrypt>=4.0",
+    "certifi>=2024.0",
+    "click>=8.1",
+    "django>=5.0",
+    "django-cors-headers>=4.0",
+    "flask>=3.0",
+    "flask-cors>=4.0",
+    "flask-jwt-extended>=4.6",
+    "geoip2>=4.8",
+    "greenlet>=3.0",
+    "gunicorn>=22.0",
+    "itsdangerous>=2.1",
+    "jinja2>=3.1",
+    "markupsafe>=2.1",
+    "marshmallow>=3.20",
+    "maxminddb>=2.4",
+    "multidict>=6.0",
+    "packaging>=24.0",
+    "passlib>=1.7",
+    "pycparser>=2.21",
+    "pyjwt>=2.8",
+    "requests>=2.31",
+    "sqlalchemy>=2.0",
+    "werkzeug>=3.0",
+    "yarl>=1.9",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/amitt001/pygmy"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pygmy", "pygmyui"]
+
+[tool.uv]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["pygmy/tests", "tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]
